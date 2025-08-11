@@ -4,11 +4,16 @@
  * with a small offset from the top for better visual placement.
  */
 
-const Button = ({ text, className, id }) => {
+const Button = ({ text, className, id, onClick }) => {
   return (
     <a
       onClick={(e) => {
         e.preventDefault(); // Stop the link from jumping instantly
+
+        if (onClick) {
+          onClick(e);
+          return;
+        }
 
         const target = document.getElementById("counter"); // Find the section with ID "counter"
 

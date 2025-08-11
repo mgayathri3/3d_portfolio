@@ -6,7 +6,9 @@ const TitleHeader = ({ title, sub }) => {
       </div>
       <div>
         <h1 className="font-semibold md:text-5xl text-3xl text-center">
-          {title}
+          <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent text-shadow-smoke">
+            {title}
+          </span>
         </h1>
       </div>
     </div>

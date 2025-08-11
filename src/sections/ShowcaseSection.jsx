@@ -64,21 +64,31 @@ const AppShowcase = () => {
           </div>
 
           <div className="project-list-wrapper overflow-hidden">
-            <div className="project" ref={libraryRef}>
-              <div className="image-wrapper bg-[#FFEFDB]">
+            <div ref={libraryRef} className="first-project-wrapper">
+              <div className="image-wrapper">
                 <img
                   src="/images/project2.png"
                   alt="Library Management Platform"
                 />
               </div>
-              <h2>The Library Management Platform</h2>
+              <div className="text-content">
+                <h2>The Library Management Platform</h2>
+                <p className="text-white-50 md:text-xl">
+                  A comprehensive platform to manage library resources efficiently with modern UI and features.
+                </p>
+              </div>
             </div>
 
-            <div className="project" ref={ycDirectoryRef}>
-              <div className="image-wrapper bg-[#FFE7EB]">
+            <div ref={ycDirectoryRef} className="first-project-wrapper">
+              <div className="image-wrapper">
                 <img src="/images/project3.png" alt="YC Directory App" />
               </div>
-              <h2>YC Directory - A Startup Showcase App</h2>
+              <div className="text-content">
+                <h2>YC Directory - A Startup Showcase App</h2>
+                <p className="text-white-50 md:text-xl">
+                  A platform to pitch, vote, and connect with entrepreneurs in a vibrant startup community.
+                </p>
+              </div>
             </div>
           </div>
         </div>

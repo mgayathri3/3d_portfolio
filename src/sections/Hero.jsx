@@ -15,6 +15,13 @@ const Hero = () => {
     );
   });
 
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById("projects");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="absolute top-0 left-0 z-10">
@@ -25,7 +32,13 @@ const Hero = () => {
         {/* LEFT: Hero Content */}
         <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
           <div className="flex flex-col gap-7">
-            <div className="hero-text">
+              <div className="hero-text">
+              
+              <p className="md:text-6xl text-4xl font-semibold mb-2">
+                <span className="text-white">Hi, I'm </span>
+                <span className="text-purple-400 font-bold">Gayathri</span>
+              </p>
+              
               <h1>
                 Shaping
                 <span className="slide">
@@ -47,18 +60,15 @@ const Hero = () => {
                 </span>
               </h1>
               <h1>into Real Projects</h1>
-              <h1>that Deliver Results</h1>
+              
             </div>
 
-            <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              Hi, I’m Adrian, a developer based in Croatia with a passion for
-              code.
-            </p>
-
+            
             <Button
               text="See My Work"
               className="md:w-80 md:h-16 w-60 h-12"
               id="counter"
+              onClick={scrollToProjects}
             />
           </div>
         </header>
@@ -71,7 +81,7 @@ const Hero = () => {
         </figure>
       </div>
 
-      <AnimatedCounter />
+      {/* <AnimatedCounter /> */}
     </section>
   );
 };

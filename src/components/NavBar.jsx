@@ -6,6 +6,9 @@ const NavBar = () => {
   // track if the user has scrolled down the page
   const [scrolled, setScrolled] = useState(false);
 
+  // track active link
+  const [activeLink, setActiveLink] = useState("#hero");
+
   useEffect(() => {
     // create an event listener for when the user scrolls
     const handleScroll = () => {
@@ -13,6 +16,22 @@ const NavBar = () => {
       // if so, set the state to true
       const isScrolled = window.scrollY > 10;
       setScrolled(isScrolled);
+
+      // update active link based on scroll position
+      const sections = navLinks.map(link => document.querySelector(link.link));
+      const scrollPos = window.scrollY + window.innerHeight / 2;
+
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        if (section) {
+          const top = section.offsetTop;
+          const bottom = top + section.offsetHeight;
+          if (scrollPos >= top && scrollPos < bottom) {
+            setActiveLink(navLinks[i].link);
+            break;
+          }
+        }
+      }
     };
 
     // add the event listener to the window
@@ -26,14 +45,14 @@ const NavBar = () => {
     <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
       <div className="inner">
         <a href="#hero" className="logo">
-          Adrian JSM
+          Gayathri | Developer
         </a>
 
         <nav className="desktop">
           <ul>
             {navLinks.map(({ link, name }) => (
               <li key={name} className="group">
-                <a href={link}>
+                <a href={link} className={activeLink === link ? "active" : ""}>
                   <span>{name}</span>
                   <span className="underline" />
                 </a>

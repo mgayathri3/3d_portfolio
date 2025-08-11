@@ -17,6 +17,7 @@ body {
 
 section {
   width: 100dvw;
+  scroll-margin-top: 80px; /* Adjust this value to match the navbar height */
 }
 
 @theme {
@@ -41,6 +42,14 @@ section {
 @layer components {
   .padding-x {
     @apply px-5 md:px-10;
+  }
+
+  .text-shadow-smoke {
+    text-shadow:
+      0 0 5px rgba(0, 0, 0, 0.4),
+      0 0 10px rgba(0, 0, 0, 0.3),
+      0 0 15px rgba(0, 0, 0, 0.2),
+      0 0 20px rgba(0, 0, 0, 0.1);
   }
 
   .padding-x-lg {
@@ -84,8 +93,8 @@ section {
     @apply relative z-10 xl:mt-20 mt-32 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center;
   }
 
-  .hero-text {
-    @apply flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none;
+.hero-text {
+    @apply flex flex-col justify-center md:text-[48px] text-[24px] font-semibold relative z-10 pointer-events-none;
     img {
       @apply size-8 md:size-10 object-contain;
     }
@@ -124,7 +133,7 @@ section {
     nav.desktop {
       @apply hidden lg:flex items-center;
 
-      ul {
+    ul {
         @apply flex space-x-8;
 
         li {
@@ -134,8 +143,16 @@ section {
             @apply transition-colors duration-300 hover:text-white;
           }
 
+          &.active span {
+            @apply text-purple-500;
+          }
+
           .underline {
             @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full;
+          }
+
+          &.active .underline {
+            @apply w-full bg-purple-500;
           }
         }
       }
@@ -329,6 +346,33 @@ section {
   transition: all cubic-bezier(0.71, 0.03, 0.34, 1);
 }
 
+/* Neon text style for Hi, I'm Gayathri */
+.neon-text {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.1;
+  background: linear-gradient(90deg, #b0a7d6 20%, #ffffff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background 0.5s ease-in-out;
+}
+
+.neon-text:hover {
+  background: linear-gradient(90deg, #f0e9ff, #d6caff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.neon-text:hover {
+  color: #d6caff; /* lighter purple on hover */
+}
+
+@media (min-width: 768px) {
+  .neon-text {
+    font-size: 60px;
+  }
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -414,11 +458,16 @@ section {
 }
 @keyframes marquee {
   0% {
-    left: 0;
+    transform: translateX(0%);
   }
   100% {
-    left: -100%;
+    transform: translateX(-50%);
   }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 20s linear infinite;
 }
 /* marquee end */
 
